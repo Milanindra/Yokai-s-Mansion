@@ -4,8 +4,7 @@ using Player.PlayerCamera;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Player.Movement;
-using TMPro;
-using Unity.VisualScripting;        
+using UnityEngine.Events;
 
 namespace Player
 {
@@ -22,6 +21,9 @@ namespace Player
         #endregion
         
         #region Fields
+        private int _maxHealth;
+        private int _currentHealth;
+        
         private Vector2 _moveInput;
         private Vector2 _lookInput;
         private float _cooldownTimer;
@@ -32,6 +34,17 @@ namespace Player
         private PlayerAttacks _playerAttacks;
         private DetectionSystem _detectionSystem;
         #endregion
+
+        #region Properties
+        public float MaxHealth => _maxHealth;
+        public float CurrentHealth => _currentHealth;
+        #endregion
+
+        #region Unity events
+        public UnityEvent OnHit { get; } = new UnityEvent();
+        public UnityEvent OnDie { get; } = new UnityEvent();
+        public UnityEvent OnHeal { get; } = new UnityEvent();
+        #endregion
         
         #region Setup
         private void Awake()
@@ -41,6 +54,11 @@ namespace Player
             _cameraRotation = GetComponent<CameraRotation>();
             _playerAttacks = GetComponent<PlayerAttacks>();
             _detectionSystem = GetComponent<DetectionSystem>();
+        }
+
+        private void Start()
+        {
+            _currentHealth = _maxHealth;
         }
         #endregion
         
@@ -78,8 +96,14 @@ namespace Player
                 _cooldownTimer = _attackCooldown;
             }
         }
+        public void TakeDamage(float damage)
+        {
+            
+        }
+        public void Heal(float amount)
+        {
+            
+        }
         #endregion
-
     }
-
 }
