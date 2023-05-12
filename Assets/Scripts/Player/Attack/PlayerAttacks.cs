@@ -39,9 +39,10 @@ namespace Player.Attack
                     {
                         if (_detectionSystem.IsTargetInCone(enemy.transform, _playerOrigin.position, _viewAngle))
                         {
-                            //TODO: Deal damage to enemy
                             //TODO: Play attack animation
                             //TODO: Play attack sound
+                            Debug.Log("Hit enemy: " + enemy.name);
+                            enemy.TakeDamage(damage);
                         }
                     }
                 }

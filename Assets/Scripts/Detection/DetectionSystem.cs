@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Enemy.Behaviour;
 using UnityEngine;
 
 namespace Detection
@@ -11,21 +12,21 @@ namespace Detection
         #endregion
 
         #region Fields
-        private List<GameObject> _aliveEnemies;
+        private List<EnemyBehaviour> _aliveEnemies;
         #endregion
 
         #region Setup
-        private void SetEnemies(List<GameObject> enemies)
+        private void SetEnemies(List<EnemyBehaviour> enemies)
         {
             _aliveEnemies = enemies;
         }
         #endregion
 
         #region Public
-        public List<GameObject> DetectEnemiesInRange(float range)
+        public List<EnemyBehaviour> DetectEnemiesInRange(float range)
         {
             var origin = _playerOrigin.position;
-            List<GameObject> detectedEnemies = new();
+            List<EnemyBehaviour> detectedEnemies = new();
             
             for (int i = 0; i < _aliveEnemies.Count; i++)
             {
