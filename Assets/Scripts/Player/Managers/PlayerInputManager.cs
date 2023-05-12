@@ -1,4 +1,3 @@
-using Detection;
 using Player.Attack;
 using Player.PlayerCamera;
 using UnityEngine;
@@ -28,7 +27,6 @@ namespace Player.Managers
         private PlayerMovement _playerMovement;
         private CameraRotation _cameraRotation;
         private PlayerAttacks _playerAttacks;
-        private DetectionSystem _detectionSystem;
         #endregion
 
         #region Setup
@@ -38,7 +36,6 @@ namespace Player.Managers
             _playerMovement = GetComponent<PlayerMovement>();
             _cameraRotation = GetComponent<CameraRotation>();
             _playerAttacks = GetComponent<PlayerAttacks>();
-            _detectionSystem = GetComponent<DetectionSystem>();
         }
         #endregion
         
