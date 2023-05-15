@@ -8,10 +8,6 @@ namespace Enemy.Movement
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyMovement : MonoBehaviour
     {
-        #region Unity editor fields
-        [SerializeField] private float _speed;
-        #endregion
-
         #region Fields
         private EnemyBehaviour _enemyBehaviour;
         private NavMeshAgent _navMeshAgent;
@@ -26,7 +22,6 @@ namespace Enemy.Movement
         
         private void Start()
         {
-            _navMeshAgent.speed = _speed;
             _navMeshAgent.destination = transform.position;
         }
         #endregion

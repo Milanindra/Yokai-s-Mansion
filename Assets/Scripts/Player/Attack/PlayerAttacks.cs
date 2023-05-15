@@ -30,19 +30,22 @@ namespace Player.Attack
         #region Public
         public void Attack(int damage, float range)
         {
-            var targets = _detectionSystem.DetectEnemiesInRange(range);
+            var targets = _detectionSystem.DetectEnemies();
             if (targets.Count > 0)
             {
                 foreach (var enemy in targets)
                 {
-                    if (_detectionSystem.IsTargetInCone(_playerOrigin, enemy.transform.position, _viewAngle))
+                    if (Vector3.Distance(transform.position, enemy.transform.position) < range)
                     {
-                        if (_detectionSystem.IsTargetInCone(enemy.transform, _playerOrigin.position, _viewAngle))
+                        if (_detectionSystem.IsTargetInCone(_playerOrigin, enemy.transform.position, _viewAngle))
                         {
-                            //TODO: Play attack animation
-                            //TODO: Play attack sound
-                            Debug.Log("Hit enemy: " + enemy.name);
-                            enemy.TakeDamage(damage);
+                            if (_detectionSystem.IsTargetInCone(enemy.transform, _playerOrigin.position, _viewAngle))
+                            {
+                                //TODO: Play attack animation
+                                //TODO: Play attack sound
+                                Debug.Log("Hit enemy: " + enemy.name);
+                                enemy.TakeDamage(damage);
+                            }
                         }
                     }
                 }

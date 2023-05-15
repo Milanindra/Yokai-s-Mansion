@@ -1327,6 +1327,7 @@ GameObject:
   - component: {fileID: 957398660}
   - component: {fileID: 957398659}
   - component: {fileID: 957398658}
+  - component: {fileID: 957398662}
   - component: {fileID: 957398657}
   m_Layer: 0
   m_Name: Enemy
@@ -1355,6 +1356,32 @@ MonoBehaviour:
   - {fileID: 319284064}
   - {fileID: 1828474664}
   - {fileID: 308070150}
+  _origin: {fileID: 111853268}
+  _memoryTime: 8
+  _onHurtingDetectPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  _onHurting:
+    m_PersistentCalls:
+      m_Calls: []
+  _onScare:
+    m_PersistentCalls:
+      m_Calls: []
+  _onEncounter:
+    m_PersistentCalls:
+      m_Calls: []
+  _onFirstEncounter:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDetectPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDetectLoudSound:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDefault:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &957398658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1367,7 +1394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ffc1446be807c4cad884011fa6e548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
 --- !u!195 &957398659
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1424,6 +1450,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &957398662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957398656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef3c6bd79a4bf649befb617651ab8f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 957398657}
+        m_TargetAssemblyTypeName: Enemy.Behaviour.EnemyBehaviour, Assembly-CSharp
+        m_MethodName: set_IsBeingScared
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  _onDie:
+    m_PersistentCalls:
+      m_Calls: []
+  _onHeal:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,9 +2309,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerOrigin: {fileID: 609125800}
-  _nonPlayerLayerMask:
+  _playerLayer:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 0
+  _corpseLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1589292715
 MonoBehaviour:
   m_ObjectHideFlags: 0
